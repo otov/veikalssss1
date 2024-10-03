@@ -3,7 +3,8 @@ from tkinter import*
 from tkinter import ttk
 from PIL import Image, ImageTk
 
-class product:
+
+class Product:
     def __init__(self,name,price,quantity):
         self.name=name
         self.price=price
@@ -11,8 +12,9 @@ class product:
 
     def get_total_price(self):
         return self.price*self.quantity
-        
-class ShoppingCart(product):
+
+
+class ShoppingCart(Product):
     def __init__(self):
         self.products=[]
     
@@ -25,7 +27,8 @@ class ShoppingCart(product):
     def clear_cart(self):
         self.products.clear()
 
-class App:
+
+class App(ShoppingCart):
     def __init__ (self,master):
         self.master=master
         self.master.geometry("500x500")
@@ -50,13 +53,40 @@ class App:
         self.price_label.grid(row=3, column=0, padx=5, pady=5)
         self.price_entry = tk.Entry(input_frame)
         self.price_entry.grid(row=3, column=1)
+
+
+        self.add_button=tk.Button(master, text="Pievienot grozam",command=self.add_product)
+        self.add_button.pack(pady=10)
+
+        self.cart_listbox=tk.Listbox(master,width=50)
+        self.cart_listbox.pack(pady=10)
+
+        self.total_label = tk.Label(master, text="Kopējā cena: 10000000000000000000000 $",font=("Arial",12))
+        self.total_label.pack(pady=10)
+
+    def add_to_cart(self):
+        name=self.name_entry.get()
+        price = float(self.price_entry.get())
+        quantity = float(self.quantity_entry.get())
+
+        product = Product(name, price, quantity)
+        self.cart.add_product(product)
+        self.cart_listbox.insert(tk.END, " ",name," ",price," ",quantity," pcs")
+
+        self.name_entry.delete(0, tk>END)
+        self.price_entry.delete(0, tk.END)
+        self.quantity_entry.delete(0, tk.END)
+
+        self.update_total_price()
+
+    def update_total_price(self):
+        total=self.cart.get_total_price()
+        self.total_label.config(text=f"Kopējā cena: {total:.2f} $")
     
-        
+    #def clear_self()
 
 
-
-
-
-
-
-        master.mainloop()
+if __name__ == "__main__":
+    root=tk.Tk()
+    app=App(root)   
+    root.mainloop()
