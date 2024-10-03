@@ -55,14 +55,17 @@ class App(ShoppingCart):
         self.price_entry.grid(row=3, column=1)
 
 
-        self.add_button=tk.Button(master, text="Pievienot grozam",command=self.add_product)
+        self.add_button=tk.Button(master, text="Pievienot grozam",command=self.add_to_cart)
         self.add_button.pack(pady=10)
 
         self.cart_listbox=tk.Listbox(master,width=50)
         self.cart_listbox.pack(pady=10)
 
-        self.total_label = tk.Label(master, text="Kopējā cena: 10000000000000000000000 $",font=("Arial",12))
+        self.total_label = tk.Label(master, text="Kopējā cena: 0.00 Eur",font=("Arial",12))
         self.total_label.pack(pady=10)
+
+        self.clear_button = tk.Button(master, text="Dzēst grozu", command=self.clear_cart)
+        self.clear_button.pack(pady=5)
 
     def add_to_cart(self):
         name=self.name_entry.get()
@@ -71,9 +74,9 @@ class App(ShoppingCart):
 
         product = Product(name, price, quantity)
         self.cart.add_product(product)
-        self.cart_listbox.insert(tk.END, " ",name," ",price," ",quantity," pcs")
+        self.cart_listbox.insert(tk.END, f"| Produkts: {name} | Cena: ${price} | Daudzums: {quantity} gab. |")
 
-        self.name_entry.delete(0, tk>END)
+        self.name_entry.delete(0, tk.END)
         self.price_entry.delete(0, tk.END)
         self.quantity_entry.delete(0, tk.END)
 
@@ -83,7 +86,12 @@ class App(ShoppingCart):
         total=self.cart.get_total_price()
         self.total_label.config(text=f"Kopējā cena: {total:.2f} $")
     
-    #def clear_self()
+    def clear_cart(self):
+        self.cart.clear_cart()
+        self.cart_listbox.delete(0, tk.END)
+        self.update_total_price()
+
+
 
 
 if __name__ == "__main__":
