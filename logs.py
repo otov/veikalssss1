@@ -38,6 +38,7 @@ class App(ShoppingCart):
         self.cart=ShoppingCart()
 
 
+
         title_frame = tk.Frame(master)
         title_frame.pack(pady=10)
 
@@ -47,7 +48,7 @@ class App(ShoppingCart):
         input_frame = tk.Frame(master, bg="gray")
         input_frame.pack(pady=10)
 
-        
+
 
         self.name_label=tk.Label(input_frame, text="Nosaukums:", bg="grey", font=("Helvetica", 15, "bold"))
         self.name_label.grid(row=1, column=0, padx=5, pady=5)
@@ -65,13 +66,14 @@ class App(ShoppingCart):
         self.price_entry.grid(row=3, column=1)
 
 
+
         self.add_button=tk.Button(master, text="Pievienot grozam",command=self.add_to_cart, font=("Helvetica", 15, "bold"),fg="Green",bd=3)
         self.add_button.pack(pady=5)
 
         self.cart_listbox=tk.Listbox(master,width=60,bg="black",fg="white", font=("Helvetica", 10, "bold" ))
         self.cart_listbox.pack(pady=5)
 
-        self.total_label = tk.Label(master, text="Kopējā cena: 0.00 Eur",font=("Helvetica",15,"bold"),bg="grey")
+        self.total_label = tk.Label(master, text="Kopējā cena: 0.00 $",font=("Helvetica",15,"bold"),bg="grey")
         self.total_label.pack(pady=5)
 
         self.clear_button = tk.Button(master, text="Dzēst grozu", command=self.clear_cart, font=("Helvetica", 15, "bold"),fg="Red",bd=3)
@@ -79,6 +81,7 @@ class App(ShoppingCart):
 
         self.quit_button=tk.Button(master,text="Aizvērt logu", command=master.destroy, font=("Helvica", 15, "bold"),fg="Red",bd=3)
         self.quit_button.pack(pady=2)
+
 
 
         self.foto_frame=tk.Frame(master, bg="Black")
@@ -115,7 +118,6 @@ class App(ShoppingCart):
         self.cart.clear_cart()
         self.cart_listbox.delete(0, tk.END)
         self.update_total_price()
-
 
 
 
