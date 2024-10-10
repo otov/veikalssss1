@@ -32,7 +32,7 @@ class ShoppingCart(Product):
 class App(ShoppingCart):
     def __init__ (self,master):
         self.master=master
-        self.master.geometry("500x850")
+        self.master.geometry("500x860")
         self.master.title("Veikals")
         self.master.configure(background="grey")
         self.cart=ShoppingCart()
@@ -41,7 +41,7 @@ class App(ShoppingCart):
         title_frame = tk.Frame(master)
         title_frame.pack(pady=10)
 
-        self.virsraksts=tk.Label(title_frame, text="Automašīnu rezerves daļu veikals", font=("Helvica",20, "bold"), fg="Black", bd=1, bg="gray")
+        self.virsraksts=tk.Label(title_frame, text="Automašīnu rezerves daļu veikals", font=("Helvetica",20, "bold"), fg="Black", bd=1, bg="gray")
         self.virsraksts.grid(row=0,column=1)
 
         input_frame = tk.Frame(master, bg="gray")
@@ -49,32 +49,32 @@ class App(ShoppingCart):
 
         
 
-        self.name_label=tk.Label(input_frame, text="Nosaukums:", bg="grey", font=("Helvica", 15, "bold"))
+        self.name_label=tk.Label(input_frame, text="Nosaukums:", bg="grey", font=("Helvetica", 15, "bold"))
         self.name_label.grid(row=1, column=0, padx=5, pady=5)
         self.name_entry = tk.Entry(input_frame)
         self.name_entry.grid(row=1, column=1)
 
-        self.quantity_label=tk.Label(input_frame, text="Daudzums:", bg="grey",font=("Helvica", 15, "bold"))
+        self.quantity_label=tk.Label(input_frame, text="Daudzums:", bg="grey",font=("Helvetica", 15, "bold"))
         self.quantity_label.grid(row=2, column=0, padx=5, pady=5)
         self.quantity_entry = tk.Entry(input_frame)
         self.quantity_entry.grid(row=2, column=1)
 
-        self.price_label=tk.Label(input_frame, text="Cena:", bg="grey",font=("Helvica", 15, "bold"))
+        self.price_label=tk.Label(input_frame, text="Cena:", bg="grey",font=("Helvetica", 15, "bold"))
         self.price_label.grid(row=3, column=0, padx=5, pady=5)
         self.price_entry = tk.Entry(input_frame)
         self.price_entry.grid(row=3, column=1)
 
 
-        self.add_button=tk.Button(master, text="Pievienot grozam",command=self.add_to_cart, font=("Helvica", 15, "bold"),fg="Green",bd=3)
+        self.add_button=tk.Button(master, text="Pievienot grozam",command=self.add_to_cart, font=("Helvetica", 15, "bold"),fg="Green",bd=3)
         self.add_button.pack(pady=5)
 
-        self.cart_listbox=tk.Listbox(master,width=60,bg="black",fg="white")
+        self.cart_listbox=tk.Listbox(master,width=60,bg="black",fg="white", font=("Helvetica", 10, "bold" ))
         self.cart_listbox.pack(pady=5)
 
-        self.total_label = tk.Label(master, text="Kopējā cena: 0.00 Eur",font=("Helvica",15,"bold"),bg="grey")
+        self.total_label = tk.Label(master, text="Kopējā cena: 0.00 Eur",font=("Helvetica",15,"bold"),bg="grey")
         self.total_label.pack(pady=5)
 
-        self.clear_button = tk.Button(master, text="Dzēst grozu", command=self.clear_cart, font=("Helvica", 15, "bold"),fg="Red",bd=3)
+        self.clear_button = tk.Button(master, text="Dzēst grozu", command=self.clear_cart, font=("Helvetica", 15, "bold"),fg="Red",bd=3)
         self.clear_button.pack(pady=5)
 
         self.quit_button=tk.Button(master,text="Aizvērt logu", command=master.destroy, font=("Helvica", 15, "bold"),fg="Red",bd=3)
