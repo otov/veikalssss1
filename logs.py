@@ -98,7 +98,7 @@ class App(ShoppingCart):
     def add_to_cart(self):
         name=self.name_entry.get()
         price = float(self.price_entry.get())
-        quantity = float(self.quantity_entry.get())
+        quantity = int(self.quantity_entry.get())
 
         product = Product(name, price, quantity)
         self.cart.add_product(product)
